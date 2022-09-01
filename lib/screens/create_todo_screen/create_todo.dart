@@ -12,12 +12,12 @@ class CreateTodo extends StatefulWidget {
 }
 
 final TextEditingController createTodoController = TextEditingController();
-final List<CreatedTodoModel> todos = [];
+final List<CreatedTodoModel> createdTodos = [];
 
 class _CreateTodoState extends State<CreateTodo> {
   void createTodo(String name) {
     setState(() {
-      todos.add(CreatedTodoModel(name: name, checked: false));
+      createdTodos.add(CreatedTodoModel(name: name, checked: false));
     });
     createTodoController.clear();
   }
@@ -71,7 +71,7 @@ class _CreateTodoState extends State<CreateTodo> {
           Expanded(
             child: ListView(
               padding: const EdgeInsets.all(8.0),
-              children: todos.map((CreatedTodoModel? todo) {
+              children: createdTodos.map((CreatedTodoModel? todo) {
                 return Column(
                   children: [
                     CreateTodoItem(
@@ -90,7 +90,7 @@ class _CreateTodoState extends State<CreateTodo> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => TodoList(
-                    todos: todos,
+                    todos: createdTodos,
                   ),
                 ),
               );
