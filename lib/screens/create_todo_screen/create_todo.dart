@@ -20,6 +20,7 @@ class _CreateTodoState extends State<CreateTodo> {
       createdTodos.add(CreatedTodoModel(name: name, checked: false));
     });
     createTodoController.clear();
+    Navigator.of(context).pop();
   }
 
   createTodoDialog() {
@@ -37,8 +38,9 @@ class _CreateTodoState extends State<CreateTodo> {
             TextButton(
               child: const Text('Add'),
               onPressed: () {
-                Navigator.of(context).pop();
-                createTodo(createTodoController.text);
+                createTodoController.text.isEmpty
+                    ? Navigator.pop(context)
+                    : createTodo(createTodoController.text);
               },
             ),
           ],
